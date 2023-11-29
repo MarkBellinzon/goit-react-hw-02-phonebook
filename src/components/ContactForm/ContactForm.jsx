@@ -21,31 +21,31 @@ export class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <Form onSubmit={this.handleSubmit} autoComplete="off">
-        <Label>
+      <form onSubmit={this.handleSubmit}>
+        <label>
           Name
-          <Input
+          <input
             type="text"
             name="name"
             placeholder="Enter name"
             value={name}
+            required
             onChange={this.handleChange}
           />
-        </Label>
-        <Label>
+        </label>
+        <label>
           Number
-          <Input
+          <input
             type="tel"
             name="number"
             placeholder="Enter number"
             value={number}
+            required
             onChange={this.handleChange}
           />
-        </Label>
-        <Button type="submit" disabled={!name || !number}>
-          Add contact
-        </Button>
-      </Form>
+        </label>
+        <button type="submit">Add contact</button>
+      </form>
     );
   }
 }

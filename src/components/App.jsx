@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-// import { Section } from './Section/Section';
-// import { ContactForm } from './ContactForm/ContactForm';
-// import { Filter } from './Filter/Filter';
-// import { ContactList } from './ContactList/ContactList';
+import { Section } from './Section/Section';
+import { ContactForm } from './ContactForm/ContactForm';
+import { Filter } from './Filter/Filter';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -37,18 +37,34 @@ export class App extends Component {
     }));
   };
 
-  // render() {
-  //   return (
-  //     <>
-  //       <Section>
-  //         <ContactForm />
-  //       </Section>
-  //       <Section>
-  //         <Filter />
+  handleChangeFilter = ({ currentTarget: { value } }) => {
+    this.setState({ filter: value });
+  };
 
-  //         <ContactList />
-  //       </Section>
-  //     </>
-  //   );
-  // }
+  filterContacts = () => {
+    const { filter, contacts } = this.state;
+    const oneCase = filter.toLowerCase();
+    return contacts.filter(({ name }) => name.toLowerCase().includes(oneCase));
+  };
+
+  render() {
+    const { filter } = this.state;
+
+    return (
+      <>
+        <Section title="Phonebook">
+          <ContactForm addContact={this.addContact} />
+        </Section>
+
+        <Section title="Contacts">
+          <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
+
+          <ContactList
+            contacts={this.filterContacts()}
+            deleteContact={this.deleteContact}
+          />
+        </Section>
+      </>
+    );
+  }
 }
