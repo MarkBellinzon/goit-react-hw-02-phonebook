@@ -31,6 +31,12 @@ export class App extends Component {
         }));
   };
 
+  deleteContact = userId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== userId),
+    }));
+  };
+
   // render() {
   //   return (
   //     <>
