@@ -1,0 +1,19 @@
+.form {
+  border: 3px solid rgb(30, 80, 63);
+  width: 600px;
+  height: 700px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 1rem 1rem 2rem rgba(63, 84, 145, 0.435),
+    -1rem -1rem 2rem rgb(38, 60, 125, 0.435);
+  margin-top: 30px;
+  background-color: rgb(184, 218, 206);
+}
+
+.title {
+  font-size: 42px;
+  color: rgb(38, 119, 92);
+}

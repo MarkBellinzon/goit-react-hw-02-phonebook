@@ -6,6 +6,8 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
+import css from './App.module.css';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -51,12 +53,13 @@ export class App extends Component {
     const { filter } = this.state;
 
     return (
-      <>
-        <Section title="Phonebook">
+      <div className={css.form}>
+        <h1 className={css.title}>Phonebook</h1>
+        <Section>
           <ContactForm addContact={this.addContact} />
         </Section>
-
-        <Section title="Contacts">
+        <h1 className={css.title}>Contacts</h1>
+        <Section>
           <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
 
           <ContactList
@@ -64,7 +67,7 @@ export class App extends Component {
             deleteContact={this.deleteContact}
           />
         </Section>
-      </>
+      </div>
     );
   }
 }
