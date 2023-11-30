@@ -58,14 +58,17 @@ export class App extends Component {
         <Section>
           <ContactForm addContact={this.addContact} />
         </Section>
+
         <h1 className={css.title}>Contacts</h1>
+
         <Section>
           <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
-
-          <ContactList
-            contacts={this.filterContacts()}
-            deleteContact={this.deleteContact}
-          />
+          <div className={css.scrollbar}>
+            <ContactList
+              contacts={this.filterContacts()}
+              deleteContact={this.deleteContact}
+            />
+          </div>
         </Section>
       </div>
     );
